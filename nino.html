@@ -1,0 +1,112 @@
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="site_de_videos com conteúdos de whindersson nunes, matuê, teto, wiu">
+        <meta name="keywords" content="whindersson nunes, matuê, teto, wiu">
+        <meta name="author" content="josemar">
+        <meta name="theme-color" content="#808080">
+
+        <meta property="og:title" content="Site videos">
+        <meta property="og:description" content="site de videos com conteúdos de whindersson nunes, matuê, teto, wiu">
+        <meta property="og:type" content="website">
+        <title>Site de video</title>
+        <!--css externo-->
+        <link rel="stylesheet" href="styles.css">
+        
+    </head>
+    <body>
+        <header>
+            <form id="form-pesquisa" aria-label="Formulário de pesquisa">
+                <div class="barra-de-pesquisa">
+                    <label for="pesquisas">Pesquisar</label>
+                    <input type="search" name="pesquisa" id="pesquisas" placeholder="Pesquisa" aria-label="campo de pesquisa">
+                    <button type="submit" id="botao-pesquisar" aria-label="Botão de pesquisar">
+                        <span role="img" aria-label="ícone de lupa">🔎</span>
+                    </button>
+                </div>
+            </form>
+        </header>
+        <section id="resultados"></section>
+       <hr>
+       <section class="text">
+       <h2 id="introducao">Introdução ao Projeto</h2>
+       <p>
+           Estamos desenvolvendo um site de vídeos com o objetivo de proporcionar uma plataforma acessível e inovadora para criadores de conteúdo. O site busca oferecer uma experiência de usuário agradável, com um design moderno e ferramentas interativas, visando facilitar o acesso e a navegação dos usuários.
+       </p>
+       <h2 id="objetivos">Objetivos do Site de Vídeos</h2>
+       <p>
+           O principal objetivo do nosso site é permitir que os usuários compartilhem e assistam a vídeos de alta qualidade de forma rápida e segura. Queremos incentivar a criação de conteúdo original e fornecer recursos para que os criadores possam se conectar com seu público e compartilhar suas histórias e conhecimentos.
+       </p>
+   
+       <h2 id="funcionalidades">Funcionalidades Planejadas</h2>
+       <p>
+           O site contará com diversas funcionalidades, incluindo a possibilidade de criação de perfis personalizados, upload de vídeos em diferentes formatos e resolução, um sistema de curtidas e comentários, além de listas de reprodução personalizáveis. Estamos desenvolvendo também um recurso de chat ao vivo para promover uma interação ainda mais rica entre os criadores e seus espectadores.
+       </p>
+   
+       <h2 id="diferenciais">Diferenciais do Projeto</h2>
+       <p>
+           Diferente de outras plataformas, nosso site de vídeos está sendo pensado para incluir animações fluidas e interatividade aprimorada, como transições suaves entre vídeos e animações que destacam notificações e interações em tempo real. Nosso foco é criar uma experiência visual agradável e cativante, mantendo a simplicidade na navegação.
+       </p>
+   
+       <h2 id="andamento">Andamento do Desenvolvimento</h2>
+       <p>
+           O projeto está atualmente em fase de desenvolvimento, com o foco inicial nas funcionalidades de upload e reprodução de vídeos, bem como na criação de um sistema robusto de login e perfis de usuário. A equipe de desenvolvimento está dedicada a garantir que cada detalhe seja bem executado, de modo que o site esteja pronto para o lançamento em breve.
+       </p>
+   
+       <h2 id="feedback">Solicitação de Feedback</h2>
+       <p>
+           Valorizamos o feedback dos futuros usuários e estamos abertos a sugestões e ideias para melhorar ainda mais a experiência. Queremos que o site atenda às expectativas dos criadores de conteúdo e do público que deseja uma plataforma diferenciada para consumir vídeos.
+       </p>
+     </section>
+     <hr>
+      <footer class="rodape">
+        &copy; 2024 Videos - Todos os direitos reservados. <br><br>
+        <a href="https://www.instagram.com/ninoo_santooss/" id="insta">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="logo do Instagram" width="30"> Instagram
+        </a>
+        <a href="https://twitter.com/" id="twitter">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Twitter_Logo_as_of_2021.svg" alt="Logo do Twitter" width="30"> Twitter
+        </a>
+     </footer>
+
+   </body>
+   <script>
+    const API_KEY = 'AIzaSyDVZSribxb6ulZss_H35fnPv1ObIQL7QWQ'; // Substitua pela sua chave de API do YouTube
+
+    document.getElementById('form-pesquisa').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const termoPesquisa = document.getElementById('pesquisas').value;
+        buscarVideos(termoPesquisa);
+    });
+
+    async function buscarVideos(termo) {
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${termo}&type=video&key=${API_KEY}&maxResults=5`);
+        const data = await response.json();
+
+        mostrarResultados(data.items);
+    }
+
+    function mostrarResultados(videos) {
+        const resultadosContainer = document.getElementById('resultados');
+        resultadosContainer.innerHTML = ''; // Limpa resultados anteriores
+
+        videos.forEach(video => {
+            const videoId = video.id.videoId;
+            const titulo = video.snippet.title;
+
+            const videoElement = document.createElement('div');
+            videoElement.classList.add('video');
+
+            // Incorporar o vídeo
+            videoElement.innerHTML = `
+                <h3>${titulo}</h3>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            `;
+
+            resultadosContainer.appendChild(videoElement);
+        });
+    }
+</script>
+ </html>

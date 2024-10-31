@@ -1,0 +1,141 @@
+body{
+    background-color: gainsboro;
+}
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+   
+}
+ul{
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+li {
+    display: inline-block;
+    padding-right: 10px;
+    margin: 20px;
+    font-size: 1.25rem;
+}
+
+.barra-de-pesquisa{
+   background-color: rgb(79, 149, 240);
+   padding: 30px;
+   text-align: center;
+   border-radius: 20px;
+   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
+}
+label{
+    font-size: 1.5625rem;
+    font-family: sans-serif;
+    display: block;
+    margin-bottom: 10px;
+}
+input, span {
+    font-size: 2rem;
+    border: none;
+}
+input{
+    border-radius: 20px 2px 2px 0;
+    padding: 8px 16px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+}
+input::placeholder{
+    text-align: center;
+    color: #999;
+}
+button{
+    border-radius: 2px 2px 20px 2px;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: gainsboro;
+}
+@media screen and (max-width: 768px) {
+    li {
+        font-size: 1rem;
+        margin: 10px;
+    }
+
+    input, 
+    span {
+        font-size: 1.5rem;
+    }
+
+    .barra-de-pesquisa {
+        padding: 15px;
+    }
+}
+a{
+    font-size: 2rem;
+    font-family:  sans-serif;
+    text-decoration: none;
+    color: cadetblue;
+}
+a:hover{
+    color: aqua;
+}
+hr {
+    width: 80%;
+    margin: 20px auto;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+#h1{
+    padding: 0;
+    color: black;
+    justify-content: center;
+    display: flex;
+    font-family: sans-serif;
+    text-shadow: 2px 45px 5px #999;
+}
+#h1:hover {
+    color: #999;
+}
+.text{
+    font-family: sans-serif;
+    display: inline-block;
+    justify-content: center;
+}
+.rodape{
+    display: block;
+    padding: 50px;
+    background-color: #999;
+    color: black;
+    justify-content: center;
+    text-align: center;
+}
+img{
+    width: 20px;
+    height: 20px;
+}
+#insta{
+    color: black;
+    font-size: larger;
+}
+#insta:hover{
+    color: gray;
+}
+#resultados {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.video {
+    width: 100%;
+    max-width: 560px;
+    text-align: center;
+}
+
+.video h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
